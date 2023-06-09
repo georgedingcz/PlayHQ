@@ -8,14 +8,25 @@ import Homepage from "./Components/Homepage";
 import Nav from "./Components/Nav"
 
 function App() {
+  const [games, setGames] = useState([]);
+  useEffect(() => {
+    async function getGames() {
+      const response = await fetch(
+        `https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15`
+      );
+      const jsonData = await response.json();
+      setGames(jsonData);
+    }
+    getGames();
+  }, []);
   return (
     <>
     {<Nav/>}
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/games" element={<GameTitles />} />
-        <Route path="/ratings" element={<SteamRatings />} />
-        <Route path="/saleprices" element={<SalePrices />} />
+        <Route path="/games" element={<GameTitles games={games}/>} />
+        <Route path="/ratings" element={<SteamRatings games={games}/>} />
+        <Route path="/saleprices" element={<SalePrices games={games}/>} />
       </Routes>
     </>
   );

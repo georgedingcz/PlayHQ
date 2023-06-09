@@ -8,17 +8,6 @@ import Homepage from "./Components/Homepage";
 import Nav from "./Components/Nav"
 
 function App() {
-  const [games, setGames] = useState();
-  useEffect(() => {
-    async function getGames() {
-      const response = await fetch(
-        `https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15`
-      );
-      const jsonData = await response.json();
-      setGames(jsonData);
-    }
-    getGames();
-  }, []);
   return (
     <>
     {<Nav/>}
@@ -28,7 +17,6 @@ function App() {
         <Route path="/ratings" element={<SteamRatings />} />
         <Route path="/saleprices" element={<SalePrices />} />
       </Routes>
-      {/* <p>{JSON.stringify(games)}</p> */}
     </>
   );
 }

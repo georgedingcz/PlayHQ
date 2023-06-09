@@ -1,19 +1,24 @@
-import DateLastChange from "./DateLastChange";
+/* eslint react/prop-types: 0 */
 
 export default function SalePrices({ games }) {
+  const sortedGamesPrice = games.toSorted((a, b) => {
+    return a.salePrice - b.salePrice;
+  });
+
   return (
     <>
-      {games.map((game) => (
-        <li key={game.gameID}>
+      {sortedGamesPrice.map((game) => (
+        <ol key={game.gameID}>
           {game.title}
           <br></br>
-          {game.salePrice}
+          Price:${game.salePrice}
+          <br></br>
+          {game.lastChange}
           <br></br>
           <img width="300" src={game.thumb} />
-        </li>
+        </ol>
       ))}
       <h2>Sale Prices</h2>
-      <h3>{<DateLastChange />}</h3>
     </>
   );
 }

@@ -1,14 +1,20 @@
+/* eslint react/prop-types: 0 */
+
 export default function SteamRatings({ games }) {
+  const sortedGamesRating = games.toSorted((a, b) => {
+    return b.steamRatingPercent - a.steamRatingPercent;
+  });
+
   return (
     <>
-      {games.map((game) => (
-        <li key={game.gameID}>
+      {sortedGamesRating.map((game) => (
+        <ol key={game.gameID}>
           {game.title}
           <br></br>
-          {game.steamRatingPercent}
+          Steam Rating: {game.steamRatingPercent}
           <br></br>
           <img width="300" src={game.thumb} />
-        </li>
+        </ol>
       ))}
       <h2>Steam Ratings</h2>
     </>

@@ -6,6 +6,7 @@ import SteamRatings from "./Components/SteamRatings";
 import SalePrices from "./Components/SalePrices";
 import Homepage from "./Components/Homepage";
 import Nav from "./Components/Nav"
+import OneGame from "./Components/OneGame";
 
 function App() {
   const [games, setGames] = useState([]);
@@ -24,7 +25,9 @@ function App() {
     {<Nav/>}
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/games" element={<GameTitles games={games}/>} />
+        <Route path="/games" element={<GameTitles games={games}/>} >
+          <Route path=":id" element={<OneGame/>}/>
+        </Route>
         <Route path="/ratings" element={<SteamRatings games={games}/>} />
         <Route path="/saleprices" element={<SalePrices games={games}/>} />
       </Routes>

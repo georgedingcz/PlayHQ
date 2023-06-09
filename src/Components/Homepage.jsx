@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-
+/* eslint react/prop-types: 0 */
 
 export default function Homepage() {
   return (

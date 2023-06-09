@@ -1,5 +1,7 @@
 /* eslint react/prop-types: 0 */
 
+// import { Outlet } from "react-router-dom";
+
 export default function GameTitles({ games }) {
   const sortedGamesName = games.toSorted((a, b) => {
     if (a.title < b.title) {
@@ -15,7 +17,8 @@ export default function GameTitles({ games }) {
       {sortedGamesName.map((game) => (
         <ol key={game.gameID}>
           {game.title}
-          <br></br>
+          {/* {JSON.stringify(game.title)} */}
+          <br />
           <img width="300" src={game.thumb} />
         </ol>
       ))}

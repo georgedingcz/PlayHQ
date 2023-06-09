@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./CSS/App.css";
-import GameTitles from "./Components/GameTitles";
-import SteamRatings from "./Components/SteamRatings";
-import SalePrices from "./Components/SalePrices";
-import Homepage from "./Components/Homepage";
-import Nav from "./Components/Nav"
+import GameTitles from "./Components/Routes/GameTitles";
+import SteamRatings from "./Components/Routes/SteamRatings";
+import SalePrices from "./Components/Routes/SalePrices";
+import Homepage from "./Components/Routes/Homepage";
+import Nav from "./Components/Nav";
 import OneGame from "./Components/OneGame";
 
 function App() {
@@ -22,14 +22,15 @@ function App() {
   }, []);
   return (
     <>
-    {<Nav/>}
+      {<Nav />}
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/games" element={<GameTitles games={games}/>} >
-          <Route path=":id" element={<OneGame/>}/>
+        <Route path="/" element={<Homepage games={games} />} />
+        <Route path="/games">
+          <Route index element={<GameTitles games={games} />} />
+          <Route path=":id" element={<OneGame games={games} />} />
         </Route>
-        <Route path="/ratings" element={<SteamRatings games={games}/>} />
-        <Route path="/saleprices" element={<SalePrices games={games}/>} />
+        <Route path="/ratings" element={<SteamRatings games={games} />} />
+        <Route path="/saleprices" element={<SalePrices games={games} />} />
       </Routes>
     </>
   );

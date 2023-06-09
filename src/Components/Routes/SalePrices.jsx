@@ -10,11 +10,11 @@ export default function SalePrices({ games }) {
       {sortedGamesPrice.map((game) => (
         <ol key={game.gameID}>
           {game.title}
-          <br></br>
+          <br />
           Price:${game.salePrice}
-          <br></br>
+          <br />
           {game.lastChange}
-          <br></br>
+          <br />
           <img width="300" src={game.thumb} />
         </ol>
       ))}

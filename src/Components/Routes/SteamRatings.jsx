@@ -10,9 +10,9 @@ export default function SteamRatings({ games }) {
       {sortedGamesRating.map((game) => (
         <ol key={game.gameID}>
           {game.title}
-          <br></br>
+          <br />
           Steam Rating: {game.steamRatingPercent}
-          <br></br>
+          <br />
           <img width="300" src={game.thumb} />
         </ol>
       ))}

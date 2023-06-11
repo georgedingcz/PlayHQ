@@ -43,7 +43,7 @@ function App() {
         />
         <Route path="/games">
           <Route index element={<GameTitles games={games} />} />
-          <Route path=":id" element={<OneGame games={games} />} />
+          <Route path=":id" element={<OneGame games={games} unixTimeStamp={unixTimeStamp}/>} />
           <Route path="*" element={<NoGame />} />
         </Route>
         <Route path="/ratings" element={<SteamRatings games={games} />} />

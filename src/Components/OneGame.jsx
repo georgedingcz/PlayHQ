@@ -2,8 +2,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-export default function OneGame() {
-  const [game, setGame] = useState({})
+export default function OneGame({games, unixTimeStamp}) {
+  const [chosenGame, setChosenGame] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
@@ -12,16 +12,30 @@ export default function OneGame() {
         `https://www.cheapshark.com/api/1.0/games?id=${id}`
       );
       const jsonData = await response.json();
-      setGame(jsonData);
+      setChosenGame(jsonData);
     }
     getGame();
   }, [id]);
-
+  // const deals = chosenGame?.deals
+  // console.log(deals)
+  console.log(games.salePrice)
   return (
     <>
-      <h1>Game Details: {id}</h1>
-      {/* {game.info.title} */}
-      {JSON.stringify(game)}
+      <h1>Game: {chosenGame?.info?.title}</h1>
+      <br/>
+      Current Price: {games.salePrice}
+      <br/>
+      Cheapest Price Ever: {chosenGame?.cheapestPriceEver?.price}
+      <br/>
+      Date: {unixTimeStamp(chosenGame?.cheapestPriceEver?.date)}
+      {}
+
+      <br />
+      {/* {JSON.stringify(deals)} */}
+      {/* {deals.map((deal) => (
+        <ol key={deal.storeID}>{deal.storeID}</ol>
+      ))} */}
+      <br />
       <br />
       <a href="/">
         <button>Go To Homepage</button>

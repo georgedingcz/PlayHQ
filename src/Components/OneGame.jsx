@@ -1,19 +1,31 @@
 /* eslint react/prop-types: 0 */
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-export default function OneGame({ games }) {
+export default function OneGame() {
+  const [game, setGame] = useState({})
   const { id } = useParams();
-  const selectedGame = games.find((game) => game.gameID === id);
+
+  useEffect(() => {
+    async function getGame() {
+      const response = await fetch(
+        `https://www.cheapshark.com/api/1.0/games?id=${id}`
+      );
+      const jsonData = await response.json();
+      setGame(jsonData);
+    }
+    getGame();
+  }, [id]);
+
   return (
     <>
       <h1>Game Details: {id}</h1>
-      {/* {selectedGame.title} */}
+      {/* {game.info.title} */}
+      {JSON.stringify(game)}
       <br />
-      {JSON.stringify(selectedGame)}
-      <br />
-      {/* {selectedGame.title}
-      {selectedGame.steamRatingPercent} */}
-      {/* <button onClick={() => }/> */}
+      <a href="/">
+        <button>Go To Homepage</button>
+      </a>
     </>
   );
 }

@@ -4,17 +4,18 @@ import { Link } from "react-router-dom";
 /* eslint react/prop-types: 0 */
 
 export default function TopRatedGamesGroup({ games }) {
-  const filteredGame = games.filter((game) => {
-    return game.steamRatingPercent > 90;
-  });
-  const sortedGamesRating = filteredGame.toSorted((a, b) => {
+  // const filteredGame = games.filter((game) => {
+  //   return game.steamRatingPercent > 90;
+  // });
+  const sortedGames = games.toSorted((a, b) => {
     return b.steamRatingPercent - a.steamRatingPercent;
   });
+  const spliceSortedGames = sortedGames.splice(5);
   return (
     <>
-      <h1>Top Rated Games (Rated higher than 90%!!)</h1>
+      <h1>Top Rated Games</h1>
       <div className="TopRatedGameStyle">
-        {sortedGamesRating.map((game) => (
+        {sortedGames.map((game) => (
           <ol key={game.gameID}>
             {game.title}
             {/* {JSON.stringify(game.title)} */}

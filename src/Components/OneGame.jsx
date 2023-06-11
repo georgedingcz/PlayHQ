@@ -13,6 +13,7 @@ export default function OneGame({ games }) {
       <br />
       {/* {selectedGame.title}
       {selectedGame.steamRatingPercent} */}
+      {/* <button onClick={() => }/> */}
     </>
   );
 }

@@ -12,9 +12,9 @@ export default function SalePrices({ games, unixTimeStamp }) {
         <ol key={game.gameID}>
           {game.title}
           <br />
-          Price:${game.salePrice}
+          Price:$ {game.salePrice}
           <br />
-          {unixTimeStamp(game.lastChange)}
+          Last Update: {unixTimeStamp(game.lastChange)}
           <br />
           <Link to={`/games/${game.gameID}`}>
             <img width="300" src={game.thumb} />

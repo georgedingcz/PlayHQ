@@ -18,7 +18,6 @@ export default function RecentGames({ games, unixTimeStamp }) {
         {sortedGames.map((game) => (
           <ol key={game.gameID}>
             {game.title}
-            {/* {JSON.stringify(game.title)} */}
             <br />
             {unixTimeStamp(game.lastChange)}
             <br />

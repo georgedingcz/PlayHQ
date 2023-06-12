@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 /* eslint react/prop-types: 0 */
 
 export default function TopRatedGamesGroup({ games }) {
-  // const filteredGame = games.filter((game) => {
-  //   return game.steamRatingPercent > 90;
-  // });
   const sortedGames = games.toSorted((a, b) => {
     return b.steamRatingPercent - a.steamRatingPercent;
   });

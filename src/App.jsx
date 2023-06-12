@@ -5,8 +5,8 @@ import GameTitles from "./Components/Routes/GameTitles";
 import SalePrices from "./Components/Routes/SalePrices";
 import Homepage from "./Components/Routes/Homepage";
 import Nav from "./Components/Nav";
-import OneGame from "./Components/OneGame";
-import NoGame from "./Components/NoGame";
+import OneGame from "./Components/Routes/OneGame";
+import NoGame from "./Components/Routes/NoGame";
 import SteamRatings from "./Components/Routes/SteamRatings";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     async function getGames() {
       const response = await fetch(
-        `https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15`
+        `https://www.cheapshark.com/api/1.0/deals?storeID=2&upperPrice=50&pageNumber=50`
       );
       const jsonData = await response.json();
       setGames(jsonData);

@@ -26,18 +26,14 @@ export default function OneGame({ games, unixTimeStamp }) {
       Current Price: ${game?.salePrice}
       <br />
       Current Price Since: {unixTimeStamp(game?.lastChange)}
-      <br/>
-      <br/>
+      <br />
+      <br />
       Cheapest Price Ever: ${chosenGame?.cheapestPriceEver?.price}
       <br />
       Cheapest Price Date: {unixTimeStamp(chosenGame?.cheapestPriceEver?.date)}
       <br />
       <img width="300" src={chosenGame?.info?.thumb} />
       <br />
-      {/* {JSON.stringify(deals)} */}
-      {/* {deals.map((deal) => (
-        <ol key={deal.storeID}>{deal.storeID}</ol>
-      ))} */}
       <br />
       <br />
       <a href="/">

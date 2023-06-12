@@ -19,13 +19,15 @@ export default function SearchBar() {
     if (data) {
       setGameDetails(data);
     } else {
-      console.error("Error");
+      console.error("Error:");
     }
   };
 
   return (
     <div>
+      <br />
       <form onSubmit={handleSubmit}>
+        Search Game:{" "}
         <input
           type="text"
           placeholder=""

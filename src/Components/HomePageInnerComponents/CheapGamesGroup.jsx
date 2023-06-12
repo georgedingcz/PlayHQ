@@ -19,7 +19,6 @@ export default function CheapGamesGroup({ games }) {
         {sortedGames.map((game) => (
           <ol key={game.gameID}>
             {game.title}
-            {/* {JSON.stringify(game.title)} */}
             <br />${game.salePrice}
             <br />
             <Link to={`/games/${game.gameID}`}>

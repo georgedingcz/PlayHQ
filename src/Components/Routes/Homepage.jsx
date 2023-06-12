@@ -22,9 +22,31 @@ export default function Homepage({ games, unixTimeStamp }) {
   //     return -1;
   //   }
   // });
+
+  const [testAir, setTestAir] = useState();
+  useEffect(() => {
+    async function getAirTable() {
+      const response = await fetch(
+        `https://api.airtable.com/v0/applqK2pr4BxQlJ07/PlayHQ`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer key1Adz0lNfrpm3Y2`,
+          },
+        }
+      );
+      const jsonData = await response.json();
+      setTestAir(jsonData);
+    }
+    getAirTable();
+  }, []);
+  console.log(testAir?.records);
+  const toTest = testAir?.records;
+  // const toTest = testAir.records
+
   return (
     <>
-     {/* <h2>
+      {/* <h2>
         <label>Choose an online game store:</label>
         <select name="stores" id="store-select">
           {sortedGameStore.map((store) => (
@@ -34,6 +56,22 @@ export default function Homepage({ games, unixTimeStamp }) {
           ))}
         </select>
       </h2> */}
+      {/* {JSON.stringify(testAir)} */}
+      {toTest?.map((air) => (
+        <ol key={air.id}>{air.id}</ol>
+      ))}
+      {/* {sortedGames.map((game) => (
+          <ol key={game.gameID}>
+            {game.title}
+            <br />
+            {unixTimeStamp(game.lastChange)}
+            <br />
+            <Link to={`/games/${game.gameID}`}>
+              <img width="300" src={game.thumb} />
+            </Link>{" "}
+          </ol>
+        ))} */}
+
       <h1>Welcome To PlayHQ</h1>
       <CheapGamesGroup games={games} />
       <TopRatedGamesGroup games={games} />

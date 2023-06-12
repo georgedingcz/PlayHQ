@@ -16,25 +16,11 @@ export default function Homepage({ games, unixTimeStamp }) {
     }
     getGameStores();
   }, []);
-  const sortedGameStore = gameStores.toSorted((a, b) => {
-    if (a.storeName < b.storeName) {
-      return -1;
-    }
-  });
 
   return (
     <>
       <h1>Welcome To PlayHQ</h1>
-      <h2>
-        <label>Choose an online game store:</label>
-        <select name="stores" id="store-select">
-          {sortedGameStore.map((store) => (
-            <option key={store.storeID} value={store.storeName}>
-              {store.storeName}
-            </option>
-          ))}
-        </select>
-      </h2>
+
       <CheapGamesGroup games={games} />
       <TopRatedGamesGroup games={games} />
       <RecentGames games={games} unixTimeStamp={unixTimeStamp} />

@@ -10,7 +10,7 @@ export default function CheapGamesGroup({ games }) {
   const sortedGames = games.toSorted((a, b) => {
     return a.salePrice - b.salePrice;
   });
-  const spliceSortedGames = sortedGames.splice(5);
+  const spliceSortedGames = sortedGames.splice(4);
 
   return (
     <>

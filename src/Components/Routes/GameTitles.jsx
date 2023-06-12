@@ -1,6 +1,7 @@
 /* eslint react/prop-types: 0 */
 
-// import { Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
+import SearchBar from "../HomePageInnerComponents/SearchBar";
 
 export default function GameTitles({ games }) {
   const sortedGamesName = games.toSorted((a, b) => {
@@ -14,12 +15,15 @@ export default function GameTitles({ games }) {
   });
   return (
     <>
+      <SearchBar />
       {sortedGamesName.map((game) => (
         <ol key={game.gameID}>
           {game.title}
           {/* {JSON.stringify(game.title)} */}
           <br />
-          <img width="300" src={game.thumb} />
+          <Link to={`/games/${game.gameID}`}>
+            <img width="300" src={game.thumb} />
+          </Link>{" "}
         </ol>
       ))}
     </>

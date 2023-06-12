@@ -10,7 +10,7 @@ export default function TopRatedGamesGroup({ games }) {
   const sortedGames = games.toSorted((a, b) => {
     return b.steamRatingPercent - a.steamRatingPercent;
   });
-  const spliceSortedGames = sortedGames.splice(5);
+  const spliceSortedGames = sortedGames.splice(4);
   return (
     <>
       <h1>Top Rated Games</h1>

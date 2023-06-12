@@ -1,4 +1,5 @@
 /* eslint react/prop-types: 0 */
+import { Link } from "react-router-dom";
 
 export default function SalePrices({ games, unixTimeStamp }) {
   const sortedGamesPrice = games.toSorted((a, b) => {
@@ -15,7 +16,9 @@ export default function SalePrices({ games, unixTimeStamp }) {
           <br />
           {unixTimeStamp(game.lastChange)}
           <br />
-          <img width="300" src={game.thumb} />
+          <Link to={`/games/${game.gameID}`}>
+            <img width="300" src={game.thumb} />
+          </Link>{" "}
         </ol>
       ))}
     </>

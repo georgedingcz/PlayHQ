@@ -1,4 +1,5 @@
 /* eslint react/prop-types: 0 */
+import { Link } from "react-router-dom";
 
 export default function SteamRatings({ games }) {
   const sortedGamesRating = games.toSorted((a, b) => {
@@ -13,7 +14,9 @@ export default function SteamRatings({ games }) {
           <br />
           Steam Rating: {game.steamRatingPercent}
           <br />
-          <img width="300" src={game.thumb} />
+          <Link to={`/games/${game.gameID}`}>
+            <img width="300" src={game.thumb} />
+          </Link>{" "}
         </ol>
       ))}
       <h2>Steam Ratings</h2>

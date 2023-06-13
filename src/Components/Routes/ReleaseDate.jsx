@@ -1,13 +1,13 @@
 /* eslint react/prop-types: 0 */
 import { Link } from "react-router-dom";
 
-export default function SalePrices({
-  gamesByPrice,
-  unixTimeStamp,
+export default function ReleaseDate({
+  gamesByReleaseDate,
   setPageNumber,
   setStoreNumber,
   pageNumber,
   storeNumber,
+  unixTimeStamp,
 }) {
   const handleNextPage = () => {
     setPageNumber(pageNumber + 1);
@@ -16,9 +16,6 @@ export default function SalePrices({
   const handleNextStore = () => {
     setStoreNumber(storeNumber + 1);
   };
-  const sortedGamesPrice = gamesByPrice.toSorted((a, b) => {
-    return a.salePrice - b.salePrice;
-  });
 
   return (
     <>
@@ -33,19 +30,18 @@ export default function SalePrices({
         <button onClick={handleNextStore}>Next Store</button>
         Store: {storeNumber}
       </>
-      {sortedGamesPrice.map((gameByPrice) => (
-        <ol key={gameByPrice.gameID}>
-          {gameByPrice.title}
+      {gamesByReleaseDate.map((gameByReleaseDate) => (
+        <ol key={gameByReleaseDate.gameID}>
+          {gameByReleaseDate.title}
           <br />
-          Price:$ {gameByPrice.salePrice}
+          Release Date: {unixTimeStamp(gameByReleaseDate.releaseDate)}
           <br />
-          Last Update: {unixTimeStamp(gameByPrice.lastChange)}
-          <br />
-          <Link to={`/games/${gameByPrice.gameID}`}>
-            <img width="300" src={gameByPrice.thumb} />
-          </Link>{" "}
+          <Link to={`/games/${gameByReleaseDate.gameID}`}>
+            <img width="300" src={gameByReleaseDate.thumb} />
+          </Link>
         </ol>
       ))}
+      <h2>Steam Ratings</h2>
     </>
   );
 }

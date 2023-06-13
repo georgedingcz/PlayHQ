@@ -4,18 +4,24 @@ import CheapGamesGroup from "../HomePageInnerComponents/CheapGamesGroup";
 import RecentGames from "../HomePageInnerComponents/RecentGames";
 import TopRatedGamesGroup from "../HomePageInnerComponents/TopRatedGamesGroup";
 
-export default function Homepage({ games, unixTimeStamp }) {
+export default function Homepage({
+  gamesByMetacritic,
+  gamesByPrice,
+  gamesByReleaseDate,
+  unixTimeStamp,
+}) {
   return (
     <>
       <h1>Welcome To PlayHQ</h1>
-      <CheapGamesGroup games={games} />
-      <TopRatedGamesGroup games={games} />
-      <RecentGames games={games} unixTimeStamp={unixTimeStamp} />
+      <CheapGamesGroup gamesByPrice={gamesByPrice} />
+      <TopRatedGamesGroup gamesByMetacritic={gamesByMetacritic} />
+      <RecentGames
+        gamesByReleaseDate={gamesByReleaseDate}
+        unixTimeStamp={unixTimeStamp}
+      />
     </>
   );
 }
-
-
 
 // const [testAir, setTestAir] = useState();
 // useEffect(() => {

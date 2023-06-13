@@ -10,13 +10,17 @@ export default function Nav() {
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/games">All Games</NavLink>
-            </li>
-            <li>
-              <NavLink to="/ratings">Steam Ratings</NavLink>
+              <NavLink to="/games">Games By Name</NavLink>
             </li>
             <li>
               <NavLink to="/saleprices">Sale Prices</NavLink>
+            </li>
+            <li>
+              <NavLink to="/ratings">Metacritic Ratings</NavLink>
+            </li>
+
+            <li>
+              <NavLink to="/releasedate">Release Dates</NavLink>
             </li>
           </ul>
         </div>

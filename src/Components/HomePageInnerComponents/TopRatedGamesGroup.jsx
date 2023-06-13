@@ -1,23 +1,22 @@
-import "../../CSS/TopRatedGameStyle.css";
 import { Link } from "react-router-dom";
 
 /* eslint react/prop-types: 0 */
 
-export default function TopRatedGamesGroup({ games }) {
-  const sortedGames = games.toSorted((a, b) => {
-    return b.steamRatingPercent - a.steamRatingPercent;
+export default function TopRatedGamesGroup({ gamesByMetacritic }) {
+  const sortedGames = gamesByMetacritic.toSorted((a, b) => {
+    return b.metacriticScore - a.metacriticScore;
   });
   const spliceSortedGames = sortedGames.splice(4);
   return (
     <>
       <h1>Top Rated Games</h1>
-      <div className="TopRatedGameStyle">
+      <div className="homepageSection">
         {sortedGames.map((game) => (
-          <ol key={game.gameID}>
+          <ol className="card" key={game.gameID}>
             {game.title}
             {/* {JSON.stringify(game.title)} */}
             <br />
-            {game.steamRatingPercent}
+            {game.metacriticScore}
             <br />
             <Link to={`/games/${game.gameID}`}>
               <img width="300" src={game.thumb} />

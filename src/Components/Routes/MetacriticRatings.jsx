@@ -1,9 +1,8 @@
 /* eslint react/prop-types: 0 */
 import { Link } from "react-router-dom";
 
-export default function SalePrices({
-  gamesByPrice,
-  unixTimeStamp,
+export default function MetacriticRatings({
+  gamesByMetacritic,
   setPageNumber,
   setStoreNumber,
   pageNumber,
@@ -16,9 +15,6 @@ export default function SalePrices({
   const handleNextStore = () => {
     setStoreNumber(storeNumber + 1);
   };
-  const sortedGamesPrice = gamesByPrice.toSorted((a, b) => {
-    return a.salePrice - b.salePrice;
-  });
 
   return (
     <>
@@ -33,19 +29,18 @@ export default function SalePrices({
         <button onClick={handleNextStore}>Next Store</button>
         Store: {storeNumber}
       </>
-      {sortedGamesPrice.map((gameByPrice) => (
-        <ol key={gameByPrice.gameID}>
-          {gameByPrice.title}
+      {gamesByMetacritic.map((gameByMetacritic) => (
+        <ol key={gameByMetacritic.gameID}>
+          {gameByMetacritic.title}
           <br />
-          Price:$ {gameByPrice.salePrice}
+          Metacritic Rating: {gameByMetacritic.metacriticScore}
           <br />
-          Last Update: {unixTimeStamp(gameByPrice.lastChange)}
-          <br />
-          <Link to={`/games/${gameByPrice.gameID}`}>
-            <img width="300" src={gameByPrice.thumb} />
-          </Link>{" "}
+          <Link to={`/games/${gameByMetacritic.gameID}`}>
+            <img width="300" src={gameByMetacritic.thumb} />
+          </Link>
         </ol>
       ))}
+      <h2>Steam Ratings</h2>
     </>
   );
 }

@@ -1,13 +1,9 @@
 /* eslint react/prop-types: 0 */
 
-import "../../CSS/CheapGameStyle.css";
 import { Link } from "react-router-dom";
 
-export default function CheapGamesGroup({ games }) {
-  // const filteredGame = games.filter((game) => {
-  //   return game.salePrice < 2;
-  // });
-  const sortedGames = games.toSorted((a, b) => {
+export default function CheapGamesGroup({ gamesByPrice }) {
+  const sortedGames = gamesByPrice.toSorted((a, b) => {
     return a.salePrice - b.salePrice;
   });
   const spliceSortedGames = sortedGames.splice(4);
@@ -15,9 +11,9 @@ export default function CheapGamesGroup({ games }) {
   return (
     <>
       <h1>Cheapest Games</h1>
-      <div className="CheapGameStyle">
+      <div className="homepageSection">
         {sortedGames.map((game) => (
-          <ol key={game.gameID}>
+          <ol className="card" key={game.gameID}>
             {game.title}
             <br />${game.salePrice}
             <br />

@@ -20,3 +20,16 @@ header a {
 header a:hover {
   color: aquamarine;
 }
+/* taken from https://uiverse.io/adamgiebl/serious-penguin-95 */
+.card {
+  width: 300px;
+  height: 300px;
+  border-radius: 30px;
+  background: lightgrey;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
+}
+
+.homepageSection {
+  display: flex;
+  flex-direction: row;
+}

@@ -10,7 +10,7 @@ export default function Nav() {
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/games">Game Titles</NavLink>
+              <NavLink to="/games">All Games</NavLink>
             </li>
             <li>
               <NavLink to="/ratings">Steam Ratings</NavLink>

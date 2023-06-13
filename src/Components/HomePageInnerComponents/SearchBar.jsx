@@ -47,7 +47,7 @@ export default function SearchBar() {
           <br />
           <Link to={`/games/${gameDetail.gameID}`}>
             <img width="300" src={gameDetail.thumb} />
-          </Link>{" "}
+          </Link>
           <br />
           <br />
         </li>

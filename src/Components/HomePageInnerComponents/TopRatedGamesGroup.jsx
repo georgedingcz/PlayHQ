@@ -21,7 +21,7 @@ export default function TopRatedGamesGroup({ games }) {
             <br />
             <Link to={`/games/${game.gameID}`}>
               <img width="300" src={game.thumb} />
-            </Link>{" "}
+            </Link>
           </ol>
         ))}
       </div>

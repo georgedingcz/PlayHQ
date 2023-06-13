@@ -11,18 +11,22 @@ import SteamRatings from "./Components/Routes/SteamRatings";
 
 function App() {
   const [games, setGames] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [storeNumber, setStoreNumber] = useState(1);
+
   //retrieve game info
   useEffect(() => {
     async function getGames() {
       const response = await fetch(
-        `https://www.cheapshark.com/api/1.0/deals?storeID=2&upperPrice=50&pageNumber=50`
+        `https://www.cheapshark.com/api/1.0/deals?storeID=${storeNumber}&upperPrice=50&pageNumber=${pageNumber}&sortBy=Title`
       );
       const jsonData = await response.json();
       setGames(jsonData);
     }
     getGames();
-  }, []);
-  //timestamp function
+  }, [storeNumber, pageNumber]);
+
+  //timestamp function (solution found online)
   const unixTimeStamp = (lastChange) => {
     const milliseconds = lastChange * 1000;
     const date = new Date(milliseconds);
@@ -30,7 +34,7 @@ function App() {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate();
-    return `${year}-${month}-${day}`;
+    return `${day}/${month}/${year}`;
   };
 
   return (
@@ -42,8 +46,27 @@ function App() {
           element={<Homepage games={games} unixTimeStamp={unixTimeStamp} />}
         />
         <Route path="/games">
-          <Route index element={<GameTitles games={games} />} />
-          <Route path=":id" element={<OneGame games={games} unixTimeStamp={unixTimeStamp}/>} />
+          <Route
+            index
+            element={
+              <GameTitles
+                games={games}
+                setPageNumber={setPageNumber}
+                setStoreNumber={setStoreNumber}
+              />
+            }
+          />
+          <Route
+            path=":id"
+            element={
+              <OneGame
+                games={games}
+                unixTimeStamp={unixTimeStamp}
+                setPageNumber={setPageNumber}
+                setStoreNumber={setStoreNumber}
+              />
+            }
+          />
           <Route path="*" element={<NoGame />} />
         </Route>
         <Route path="/ratings" element={<SteamRatings games={games} />} />

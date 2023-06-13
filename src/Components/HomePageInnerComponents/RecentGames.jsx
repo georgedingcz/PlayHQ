@@ -13,7 +13,7 @@ export default function RecentGames({ games, unixTimeStamp }) {
 
   return (
     <>
-      <h1>Most Recent Games</h1>
+      <h1>Most Recent Price Update</h1>
       <div className="TopRatedGameStyle">
         {sortedGames.map((game) => (
           <ol key={game.gameID}>
@@ -23,7 +23,7 @@ export default function RecentGames({ games, unixTimeStamp }) {
             <br />
             <Link to={`/games/${game.gameID}`}>
               <img width="300" src={game.thumb} />
-            </Link>{" "}
+            </Link>
           </ol>
         ))}
       </div>

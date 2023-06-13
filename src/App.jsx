@@ -52,7 +52,9 @@ function App() {
               <GameTitles
                 games={games}
                 setPageNumber={setPageNumber}
+                pageNumber={pageNumber}
                 setStoreNumber={setStoreNumber}
+                storeNumber={storeNumber}
               />
             }
           />

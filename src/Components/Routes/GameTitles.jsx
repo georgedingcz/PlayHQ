@@ -4,21 +4,21 @@ import { Link, useParams } from "react-router-dom";
 import SearchBar from "../HomePageInnerComponents/SearchBar";
 import { useEffect, useState } from "react";
 
-export default function GameTitles({ games, setPageNumber, setStoreNumber }) {
-  const [pageCounter, setPageCounter] = useState(1);
-  const [storeCounter, setStoreCounter] = useState(1);
+export default function GameTitles({ games, setPageNumber, setStoreNumber, pageNumber, storeNumber }) {
+  // const [pageCounter, setPageCounter] = useState(1);
+  // const [storeCounter, setStoreCounter] = useState(1);
+  const [gameStores, setGameStores] = useState([]);
 
   const handleNextPage = () => {
-    setPageCounter(pageCounter + 1);
-    setPageNumber(pageCounter + 1);
+    // setPageCounter(pageCounter + 1);
+    setPageNumber(pageNumber + 1);
   };
 
   const handleNextStore = () => {
-    setStoreCounter(storeCounter + 1);
-    setStoreNumber(storeCounter + 1);
+    // setStoreCounter(storeCounter + 1);
+    setStoreNumber(storeNumber + 1);
   };
 
-const [gameStores, setGameStores] = useState([]);
 useEffect(() => {
   async function getGameStores() {
     const response = await fetch(`https://www.cheapshark.com/api/1.0/stores`);
@@ -28,6 +28,12 @@ useEffect(() => {
   getGameStores();
 }, []);
 
+const sortedGameStore = gameStores.toSorted((a, b) => {
+  if (a.storeName < b.storeName) {
+    return -1;
+  }
+});
+
 
   return (
     <>
@@ -35,13 +41,13 @@ useEffect(() => {
       <>
         <br />
         <button onClick={handleNextPage}>Next Page</button>
-        Page: {pageCounter}
+        Page: {pageNumber}
       </>
       <br />
       <>
         <br />
         <button onClick={handleNextStore}>Next Store</button>
-        Store: {storeCounter}
+        Store: {storeNumber}
       </>
       {games?.map((game) => (
         <ol key={game.gameID}>

@@ -9,8 +9,7 @@ export default function RecentGames({ gamesByReleaseDate, unixTimeStamp }) {
   const sortedGames = gamesByReleaseDate.toSorted((a, b) => {
     return b.releaseDate - a.releaseDate;
   });
-  const spliceSortedGames = sortedGames.splice(4);
-
+  sortedGames.splice(4);
   return (
     <>
       <h2>Most Recent Games</h2>

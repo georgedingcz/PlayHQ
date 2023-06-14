@@ -3,44 +3,58 @@ import { Link } from "react-router-dom";
 
 export default function MetacriticRatings({
   gamesByMetacritic,
-  setPageNumber,
-  setStoreNumber,
-  pageNumber,
-  storeNumber,
+  setMetacriticPageNumber,
+  setMetacriticStoreNumber,
+  metacriticPageNumber,
+  metacriticStoreNumber,
 }) {
   const handleNextPage = () => {
-    setPageNumber(pageNumber + 1);
+    setMetacriticPageNumber(metacriticPageNumber + 1);
   };
-
   const handleNextStore = () => {
-    setStoreNumber(storeNumber + 1);
+    setMetacriticStoreNumber(metacriticStoreNumber + 1);
+  };
+  const handlePreviousPage = () => {
+    setMetacriticPageNumber(metacriticPageNumber - 1);
+  };
+  const handlePreviousStore = () => {
+    setMetacriticStoreNumber(metacriticStoreNumber - 1);
   };
 
   return (
-    <>
-      <>
-        <br />
-        <button onClick={handleNextPage}>Next Page</button>
-        Page: {pageNumber}
-      </>
+    <div>
       <br />
-      <>
+      <div>
+        <>
+          <button onClick={handlePreviousPage}>Prev.</button>
+          Page: {metacriticPageNumber + 1}
+          <button onClick={handleNextPage}>Next</button>
+        </>
         <br />
-        <button onClick={handleNextStore}>Next Store</button>
-        Store: {storeNumber}
-      </>
-      {gamesByMetacritic.map((gameByMetacritic) => (
-        <ol key={gameByMetacritic.gameID}>
-          {gameByMetacritic.title}
-          <br />
-          Metacritic Rating: {gameByMetacritic.metacriticScore}
-          <br />
-          <Link to={`/games/${gameByMetacritic.gameID}`}>
+        <br />
+        <>
+          <button onClick={handlePreviousStore}>Prev.</button>
+          Store: {metacriticStoreNumber}
+          <button onClick={handleNextStore}>Next</button>
+        </>
+        <br />
+        <br />
+      </div>
+
+      <div>
+        {gamesByMetacritic.map((gameByMetacritic) => (
+          <Link
+            className="otherCard"
+            key={gameByMetacritic.gameID}
+            to={`/games/${gameByMetacritic.gameID}`}
+          >
             <img width="300" src={gameByMetacritic.thumb} />
+            {gameByMetacritic.title}
+            <br />
+            Metacritic Rating: {gameByMetacritic.metacriticScore}
           </Link>
-        </ol>
-      ))}
-      <h2>Steam Ratings</h2>
-    </>
+        ))}
+      </div>
+    </div>
   );
 }

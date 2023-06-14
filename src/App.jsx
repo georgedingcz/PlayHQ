@@ -16,16 +16,16 @@ function App() {
   const [gamesByPrice, setGamesByPrice] = useState([]);
   const [gamesByReleaseDate, setGamesByReleaseDate] = useState([]);
 
-  const [titlePageNumber, setTitlePageNumber] = useState(1);
+  const [titlePageNumber, setTitlePageNumber] = useState(0);
   const [titleStoreNumber, setTitleStoreNumber] = useState(1);
 
-  const [metacriticPageNumber, setMetacriticPageNumber] = useState(1);
+  const [metacriticPageNumber, setMetacriticPageNumber] = useState(0);
   const [metacriticStoreNumber, setMetacriticStoreNumber] = useState(1);
 
-  const [pricePageNumber, setPricePageNumber] = useState(1);
+  const [pricePageNumber, setPricePageNumber] = useState(0);
   const [priceStoreNumber, setPriceStoreNumber] = useState(1);
 
-  const [releasePageNumber, setReleasePageNumber] = useState(1);
+  const [releasePageNumber, setReleasePageNumber] = useState(0);
   const [releaseStoreNumber, setReleaseStoreNumber] = useState(1);
 
   //retrieve games by store
@@ -109,10 +109,10 @@ function App() {
             element={
               <GameTitles
                 gamesByName={gamesByName}
-                setPageNumber={setTitlePageNumber}
-                pageNumber={titlePageNumber}
-                setStoreNumber={setTitleStoreNumber}
-                storeNumber={titleStoreNumber}
+                setTitlePageNumber={setTitlePageNumber}
+                titlePageNumber={titlePageNumber}
+                setTitleStoreNumber={setTitleStoreNumber}
+                titleStoreNumber={titleStoreNumber}
               />
             }
           />
@@ -122,8 +122,8 @@ function App() {
               <OneGame
                 games={gamesByName}
                 unixTimeStamp={unixTimeStamp}
-                setPageNumber={setTitlePageNumber}
-                setStoreNumber={setTitleStoreNumber}
+                setTitlePageNumber={setTitlePageNumber}
+                setTitleStoreNumber={setTitleStoreNumber}
               />
             }
           />
@@ -134,10 +134,10 @@ function App() {
           element={
             <SteamRatings
               gamesByMetacritic={gamesByMetacritic}
-              setPageNumber={setMetacriticPageNumber}
-              pageNumber={metacriticPageNumber}
-              setStoreNumber={setMetacriticStoreNumber}
-              storeNumber={metacriticStoreNumber}
+              setMetacriticPageNumber={setMetacriticPageNumber}
+              metacriticPageNumber={metacriticPageNumber}
+              setMetacriticStoreNumber={setMetacriticStoreNumber}
+              metacriticStoreNumber={metacriticStoreNumber}
             />
           }
         />
@@ -146,10 +146,10 @@ function App() {
           element={
             <SalePrices
               gamesByPrice={gamesByPrice}
-              setPageNumber={setPricePageNumber}
-              pageNumber={pricePageNumber}
-              setStoreNumber={setPriceStoreNumber}
-              storeNumber={priceStoreNumber}
+              setPricePageNumber={setPricePageNumber}
+              pricePageNumber={pricePageNumber}
+              setPriceStoreNumber={setPriceStoreNumber}
+              priceStoreNumber={priceStoreNumber}
               unixTimeStamp={unixTimeStamp}
             />
           }
@@ -159,10 +159,10 @@ function App() {
           element={
             <ReleaseDate
               gamesByReleaseDate={gamesByReleaseDate}
-              setPageNumber={setReleasePageNumber}
-              pageNumber={releasePageNumber}
-              setStoreNumber={setReleaseStoreNumber}
-              storeNumber={releaseStoreNumber}
+              setReleasePageNumber={setReleasePageNumber}
+              releasePageNumber={releasePageNumber}
+              setReleaseStoreNumber={setReleaseStoreNumber}
+              releaseStoreNumber={releaseStoreNumber}
               unixTimeStamp={unixTimeStamp}
             />
           }

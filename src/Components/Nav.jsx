@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import SearchBar from "./HomePageInnerComponents/SearchBar";
 
 export default function Nav() {
   return (
@@ -6,9 +7,6 @@ export default function Nav() {
       <header>
         <div>
           <ul>
-            <li>
-              <div>PlayHQ</div>
-            </li>
             <li>
               <NavLink to="/">Home</NavLink>
             </li>
@@ -24,6 +22,9 @@ export default function Nav() {
 
             <li>
               <NavLink to="/releasedate">Release Dates</NavLink>
+            </li>
+            <li>
+              <SearchBar />
             </li>
           </ul>
         </div>

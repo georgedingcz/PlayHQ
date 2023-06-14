@@ -2,7 +2,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-export default function OneGame({ games, unixTimeStamp }) {
+export default function OneGame({ unixTimeStamp }) {
   const [chosenGame, setChosenGame] = useState({});
   const { id } = useParams();
 
@@ -17,22 +17,18 @@ export default function OneGame({ games, unixTimeStamp }) {
     getGame();
   }, [id]);
 
-  const game = games.find((game) => game.gameID === id);
-
   return (
     <>
-      <h1>Game: {chosenGame?.info?.title}</h1>
+      <h1>{chosenGame?.info?.title}</h1>
       <br />
-      Current Price: ${game?.salePrice}
-      <br />
-      Current Price Since: {unixTimeStamp(game?.lastChange)}
-      <br />
+
+      <img width="300" src={chosenGame?.info?.thumb} />
       <br />
       Cheapest Price Ever: ${chosenGame?.cheapestPriceEver?.price}
       <br />
       Cheapest Price Date: {unixTimeStamp(chosenGame?.cheapestPriceEver?.date)}
       <br />
-      <img width="300" src={chosenGame?.info?.thumb} />
+      Steam App ID: {chosenGame?.info?.steamAppID}
       <br />
       <br />
       <br />

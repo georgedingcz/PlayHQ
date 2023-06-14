@@ -3,45 +3,56 @@ import { Link } from "react-router-dom";
 
 export default function ReleaseDate({
   gamesByReleaseDate,
-  setPageNumber,
-  setStoreNumber,
-  pageNumber,
-  storeNumber,
+  setReleasePageNumber,
+  setReleaseStoreNumber,
+  releasePageNumber,
+  releaseStoreNumber,
   unixTimeStamp,
 }) {
   const handleNextPage = () => {
-    setPageNumber(pageNumber + 1);
+    setReleasePageNumber(releasePageNumber + 1);
   };
-
   const handleNextStore = () => {
-    setStoreNumber(storeNumber + 1);
+    setReleaseStoreNumber(releaseStoreNumber + 1);
+  };
+  const handlePreviousPage = () => {
+    setReleasePageNumber(releasePageNumber - 1);
+  };
+  const handlePreviousStore = () => {
+    setReleaseStoreNumber(releaseStoreNumber - 1);
   };
 
   return (
-    <>
-      <>
-        <br />
-        <button onClick={handleNextPage}>Next Page</button>
-        Page: {pageNumber}
-      </>
+    <div>
       <br />
-      <>
+      <div>
+        <>
+          <button onClick={handlePreviousPage}>Prev.</button>
+          Page: {releasePageNumber + 1}
+          <button onClick={handleNextPage}>Next</button>
+        </>
         <br />
-        <button onClick={handleNextStore}>Next Store</button>
-        Store: {storeNumber}
-      </>
-      {gamesByReleaseDate.map((gameByReleaseDate) => (
-        <ol key={gameByReleaseDate.gameID}>
-          {gameByReleaseDate.title}
-          <br />
-          Release Date: {unixTimeStamp(gameByReleaseDate.releaseDate)}
-          <br />
-          <Link to={`/games/${gameByReleaseDate.gameID}`}>
+        <br />
+        <>
+          <button onClick={handlePreviousStore}>Prev.</button>
+          Store: {releaseStoreNumber}
+          <button onClick={handleNextStore}>Next</button>
+        </>
+      </div>
+      <div>
+        {gamesByReleaseDate.map((gameByReleaseDate) => (
+          <Link
+            className="otherCard"
+            key={gameByReleaseDate.gameID}
+            to={`/games/${gameByReleaseDate.gameID}`}
+          >
             <img width="300" src={gameByReleaseDate.thumb} />
+            {gameByReleaseDate.title}
+            <br />
+            Release Date: {unixTimeStamp(gameByReleaseDate.releaseDate)}
           </Link>
-        </ol>
-      ))}
-      <h2>Steam Ratings</h2>
-    </>
+        ))}
+      </div>
+    </div>
   );
 }

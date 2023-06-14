@@ -16,15 +16,14 @@ export default function RecentGames({ gamesByReleaseDate, unixTimeStamp }) {
       <h1>Most Recent Games</h1>
       <div className="homepageSection">
         {sortedGames.map((game) => (
-          <ol className="card" key={game.gameID}>
+          <Link className="card" key={game.gameID} to={`/games/${game.gameID}`}>
+            <img width="300" src={game.thumb} />
+            <br />
             {game.title}
             <br />
             {unixTimeStamp(game.releaseDate)}
             <br />
-            <Link to={`/games/${game.gameID}`}>
-              <img width="300" src={game.thumb} />
-            </Link>
-          </ol>
+          </Link>
         ))}
       </div>
     </>

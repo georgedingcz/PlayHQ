@@ -13,14 +13,13 @@ export default function CheapGamesGroup({ gamesByPrice }) {
       <h1>Cheapest Games</h1>
       <div className="homepageSection">
         {sortedGames.map((game) => (
-          <ol className="card" key={game.gameID}>
+          <Link className="card" key={game.gameID} to={`/games/${game.gameID}`}>
+            <img width="300" src={game.thumb} />
+            <br />
             {game.title}
             <br />${game.salePrice}
             <br />
-            <Link to={`/games/${game.gameID}`}>
-              <img width="300" src={game.thumb} />
-            </Link>
-          </ol>
+          </Link>
         ))}
       </div>
     </>

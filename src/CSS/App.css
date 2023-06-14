@@ -28,23 +28,27 @@ header a:hover {
 }
 
 .card {
-  background-color: lightseagreen;
+  background-color: lightgray;
   margin: 5px;
   text-align: center;
   text-decoration: none;
   color: black;
+  transition: 0.2s;
+  font-family: cursive;
 }
 
-/* .card a:hover {
-  color: black
-} */
+.card:hover {
+  transform: scale(1.05);
+}
 
 .homepageSection {
   display: flex;
-  /* background-color: grey; */
 }
 
-.homepageIndiv {
-  align-items: center;
-  justify-content: center;
+.homepage {
+  background-color: whitesmoke;
+}
+
+h2 {
+  margin: 10px 0px  0px 0px;
 }

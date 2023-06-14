@@ -7,6 +7,9 @@ export default function Nav() {
         <div>
           <ul>
             <li>
+              <div>PlayHQ</div>
+            </li>
+            <li>
               <NavLink to="/">Home</NavLink>
             </li>
             <li>

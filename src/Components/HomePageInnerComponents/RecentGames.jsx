@@ -13,7 +13,7 @@ export default function RecentGames({ gamesByReleaseDate, unixTimeStamp }) {
 
   return (
     <>
-      <h1>Most Recent Games</h1>
+      <h2>Most Recent Games</h2>
       <div className="homepageSection">
         {sortedGames.map((game) => (
           <Link className="card" key={game.gameID} to={`/games/${game.gameID}`}>

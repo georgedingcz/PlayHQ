@@ -10,7 +10,7 @@ export default function CheapGamesGroup({ gamesByPrice }) {
 
   return (
     <>
-      <h1>Cheapest Games</h1>
+      <h2>Cheapest Games</h2>
       <div className="homepageSection">
         {sortedGames.map((game) => (
           <Link className="card" key={game.gameID} to={`/games/${game.gameID}`}>

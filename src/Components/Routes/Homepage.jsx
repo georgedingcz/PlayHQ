@@ -11,15 +11,14 @@ export default function Homepage({
   unixTimeStamp,
 }) {
   return (
-    <>
-      <h1>Welcome To PlayHQ</h1>
+    <div className="homepage" >
       <CheapGamesGroup gamesByPrice={gamesByPrice} />
       <TopRatedGamesGroup gamesByMetacritic={gamesByMetacritic} />
       <RecentGames
         gamesByReleaseDate={gamesByReleaseDate}
         unixTimeStamp={unixTimeStamp}
       />
-    </>
+    </div>
   );
 }
 

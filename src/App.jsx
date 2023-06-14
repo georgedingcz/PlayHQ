@@ -9,6 +9,8 @@ import OneGame from "./Components/Routes/OneGame";
 import NoGame from "./Components/Routes/NoGame";
 import SteamRatings from "./Components/Routes/MetacriticRatings";
 import ReleaseDate from "./Components/Routes/ReleaseDate";
+import SearchBar from "./Components/HomePageInnerComponents/SearchBar";
+import SearchComponent from "./Components/HomePageInnerComponents/SearchComponent";
 
 function App() {
   const [gamesByName, setGamesByName] = useState([]);
@@ -27,6 +29,8 @@ function App() {
 
   const [releasePageNumber, setReleasePageNumber] = useState(0);
   const [releaseStoreNumber, setReleaseStoreNumber] = useState(1);
+
+  const [gameDetails, setGameDetails] = useState([]);
 
   //retrieve games by store
   useEffect(() => {
@@ -89,8 +93,7 @@ function App() {
 
   return (
     <>
-    
-      {<Nav />}
+      {<Nav gameDetails={gameDetails} setGameDetails={setGameDetails} />}
       <Routes>
         <Route
           path="/"
@@ -166,6 +169,10 @@ function App() {
               unixTimeStamp={unixTimeStamp}
             />
           }
+        />
+        <Route
+          path="/search/:id"
+          element={<SearchComponent gameDetails={gameDetails} />}
         />
       </Routes>
     </>

@@ -3,14 +3,13 @@ import { Link } from "react-router-dom";
 
 export default function SearchBar({ gameDetails, setGameDetails }) {
   const [searchGame, setSearchGame] = useState("");
-  // const [gameDetails, setGameDetails] = useState([]);
-
   const handleChange = (event) => {
     setSearchGame(event.target.value);
+    console.log(searchGame);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  async function handleClick() {
+    console.log("not supposed to");
     const response = await fetch(
       `https://www.cheapshark.com/api/1.0/games?title=${searchGame}&limit=60&exact=0`
     );
@@ -20,12 +19,11 @@ export default function SearchBar({ gameDetails, setGameDetails }) {
     } else {
       console.error("Error:");
     }
-  };
+  }
 
   return (
     <div>
       <br />
-      {/* <form onSubmit={handleSubmit}> */}
       Search Game:{" "}
       <input
         type="text"
@@ -33,10 +31,8 @@ export default function SearchBar({ gameDetails, setGameDetails }) {
         value={searchGame}
         onChange={handleChange}
       />
-      <button onClick={handleSubmit}>Search</button>
-      {/* </form> */}
       <Link to={`/search/${searchGame.toLowerCase().replace(" ", "")}`}>
-        <button>Try</button>
+        <button onClick={handleClick}>Search</button>
       </Link>
     </div>
   );

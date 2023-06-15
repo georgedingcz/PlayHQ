@@ -8,20 +8,17 @@ export default function ReleaseDate({
   releasePageNumber,
   releaseStoreNumber,
   unixTimeStamp,
+  gameStores,
 }) {
   const handleNextPage = () => {
     setReleasePageNumber(releasePageNumber + 1);
   };
-  const handleNextStore = () => {
-    setReleaseStoreNumber(releaseStoreNumber + 1);
-  };
   const handlePreviousPage = () => {
     setReleasePageNumber(releasePageNumber - 1);
   };
-  const handlePreviousStore = () => {
-    setReleaseStoreNumber(releaseStoreNumber - 1);
+  const handleStoreChange = (event) => {
+    setReleaseStoreNumber(event.target.value);
   };
-
   return (
     <div>
       <br />
@@ -34,9 +31,18 @@ export default function ReleaseDate({
         <br />
         <br />
         <>
-          <button onClick={handlePreviousStore}>Prev.</button>
-          Store: {releaseStoreNumber}
-          <button onClick={handleNextStore}>Next</button>
+          Choose a shop:
+          <select
+            name="store choice"
+            value={releaseStoreNumber}
+            onChange={handleStoreChange}
+          >
+            {gameStores.map((gameStore) => (
+              <option key={gameStore.storeID} value={gameStore.storeID}>
+                {gameStore.storeName}
+              </option>
+            ))}
+          </select>
         </>
       </div>
       <div>

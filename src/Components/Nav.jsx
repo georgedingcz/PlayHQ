@@ -3,7 +3,7 @@
 import { NavLink } from "react-router-dom";
 import SearchBar from "./HomePageInnerComponents/SearchBar";
 
-export default function Nav({setGameDetails}) {
+export default function Nav({ setGameDetails }) {
   return (
     <>
       <header>
@@ -26,7 +26,7 @@ export default function Nav({setGameDetails}) {
               <NavLink to="/releasedate">Release Dates</NavLink>
             </li>
             <li>
-              <SearchBar setGameDetails={setGameDetails}/>
+              <SearchBar setGameDetails={setGameDetails} />
             </li>
           </ul>
         </div>

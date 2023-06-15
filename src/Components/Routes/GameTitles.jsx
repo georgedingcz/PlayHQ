@@ -5,23 +5,20 @@ import { Link } from "react-router-dom";
 export default function GameTitles({
   gamesByName,
   setTitlePageNumber,
-  setTitleStoreNumber,
   titlePageNumber,
+  setTitleStoreNumber,
   titleStoreNumber,
   gameStores,
 }) {
   const handleNextPage = () => {
     setTitlePageNumber(titlePageNumber + 1);
   };
-
   const handlePreviousPage = () => {
     setTitlePageNumber(titlePageNumber - 1);
   };
-
   const handleStoreChange = (event) => {
     setTitleStoreNumber(event.target.value);
   };
-
   return (
     <div>
       <br />
@@ -34,7 +31,7 @@ export default function GameTitles({
         <br />
         <br />
         <>
-        Choose a shop:
+          Choose a shop:
           <select
             name="store choice"
             value={titleStoreNumber}

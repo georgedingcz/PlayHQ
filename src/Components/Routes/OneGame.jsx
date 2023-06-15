@@ -21,7 +21,6 @@ export default function OneGame({ unixTimeStamp }) {
     <>
       <h1>{chosenGame?.info?.title}</h1>
       <br />
-
       <img width="300" src={chosenGame?.info?.thumb} />
       <br />
       Cheapest Price Ever: ${chosenGame?.cheapestPriceEver?.price}

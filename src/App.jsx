@@ -31,6 +31,8 @@ function App() {
 
   const [gameDetails, setGameDetails] = useState([]);
 
+  const [gameStores, setGameStores] = useState([]);
+
   //retrieve games by store
   useEffect(() => {
     async function getGamesByName() {
@@ -79,6 +81,16 @@ function App() {
     getGamesByReleaseDate();
   }, [releaseStoreNumber, releasePageNumber]);
 
+  //retrieve list of stores
+  useEffect(() => {
+    async function getGameStores() {
+      const response = await fetch(`https://www.cheapshark.com/api/1.0/stores`);
+      const jsonData = await response.json();
+      setGameStores(jsonData);
+    }
+    getGameStores();
+  }, []);
+
   //timestamp function (solution found online)
   const unixTimeStamp = (lastChange) => {
     const milliseconds = lastChange * 1000;
@@ -89,23 +101,6 @@ function App() {
     const day = date.getDate();
     return `${day}/${month}/${year}`;
   };
-
-
-  const [gameStores, setGameStores] = useState([]);
-
-  useEffect(() => {
-    async function getGameStores() {
-      const response = await fetch(`https://www.cheapshark.com/api/1.0/stores`);
-      const jsonData = await response.json();
-      setGameStores(jsonData);
-    }
-    getGameStores();
-  }, []);
-
-
-
-
-
 
   return (
     <>
@@ -155,6 +150,7 @@ function App() {
               metacriticPageNumber={metacriticPageNumber}
               setMetacriticStoreNumber={setMetacriticStoreNumber}
               metacriticStoreNumber={metacriticStoreNumber}
+              gameStores={gameStores}
             />
           }
         />
@@ -169,6 +165,7 @@ function App() {
               setPriceStoreNumber={setPriceStoreNumber}
               priceStoreNumber={priceStoreNumber}
               unixTimeStamp={unixTimeStamp}
+              gameStores={gameStores}
             />
           }
         />
@@ -183,6 +180,7 @@ function App() {
               setReleaseStoreNumber={setReleaseStoreNumber}
               releaseStoreNumber={releaseStoreNumber}
               unixTimeStamp={unixTimeStamp}
+              gameStores={gameStores}
             />
           }
         />

@@ -11,7 +11,6 @@ export default function SearchBar({ setGameDetails }) {
   };
 
   async function handleClick() {
-    console.log("not supposed to");
     const response = await fetch(
       `https://www.cheapshark.com/api/1.0/games?title=${searchGame}&limit=60&exact=0`
     );
@@ -39,8 +38,3 @@ export default function SearchBar({ setGameDetails }) {
     </div>
   );
 }
-// form stuff
-// button
-// close form
-
-//newlink here (another button)

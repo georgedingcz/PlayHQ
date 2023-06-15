@@ -5,27 +5,23 @@ export default function SalePrices({
   gamesByPrice,
   unixTimeStamp,
   setPricePageNumber,
-  setPriceStoreNumber,
   pricePageNumber,
+  setPriceStoreNumber,
   priceStoreNumber,
+  gameStores,
 }) {
   const handleNextPage = () => {
     setPricePageNumber(pricePageNumber + 1);
   };
-  const handleNextStore = () => {
-    setPriceStoreNumber(priceStoreNumber + 1);
-  };
   const handlePreviousPage = () => {
     setPricePageNumber(pricePageNumber - 1);
   };
-  const handlePreviousStore = () => {
-    setPriceStoreNumber(priceStoreNumber - 1);
+  const handleStoreChange = (event) => {
+    setPriceStoreNumber(event.target.value);
   };
-
   const sortedGamesPrice = gamesByPrice.toSorted((a, b) => {
     return a.salePrice - b.salePrice;
   });
-
   return (
     <div>
       <br />
@@ -38,9 +34,18 @@ export default function SalePrices({
         <br />
         <br />
         <>
-          <button onClick={handlePreviousStore}>Prev.</button>
-          Store: {priceStoreNumber}
-          <button onClick={handleNextStore}>Next</button>
+          Choose a shop:
+          <select
+            name="store choice"
+            value={priceStoreNumber}
+            onChange={handleStoreChange}
+          >
+            {gameStores.map((gameStore) => (
+              <option key={gameStore.storeID} value={gameStore.storeID}>
+                {gameStore.storeName}
+              </option>
+            ))}
+          </select>
         </>
       </div>
       <div>

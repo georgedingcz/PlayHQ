@@ -4,23 +4,20 @@ import { Link } from "react-router-dom";
 export default function MetacriticRatings({
   gamesByMetacritic,
   setMetacriticPageNumber,
-  setMetacriticStoreNumber,
   metacriticPageNumber,
+  setMetacriticStoreNumber,
   metacriticStoreNumber,
+  gameStores,
 }) {
   const handleNextPage = () => {
     setMetacriticPageNumber(metacriticPageNumber + 1);
   };
-  const handleNextStore = () => {
-    setMetacriticStoreNumber(metacriticStoreNumber + 1);
-  };
   const handlePreviousPage = () => {
     setMetacriticPageNumber(metacriticPageNumber - 1);
   };
-  const handlePreviousStore = () => {
-    setMetacriticStoreNumber(metacriticStoreNumber - 1);
+  const handleStoreChange = (event) => {
+    setMetacriticStoreNumber(event.target.value);
   };
-
   return (
     <div>
       <br />
@@ -33,9 +30,18 @@ export default function MetacriticRatings({
         <br />
         <br />
         <>
-          <button onClick={handlePreviousStore}>Prev.</button>
-          Store: {metacriticStoreNumber}
-          <button onClick={handleNextStore}>Next</button>
+          Choose a shop:
+          <select
+            name="store choice"
+            value={metacriticStoreNumber}
+            onChange={handleStoreChange}
+          >
+            {gameStores.map((gameStore) => (
+              <option key={gameStore.storeID} value={gameStore.storeID}>
+                {gameStore.storeName}
+              </option>
+            ))}
+          </select>
         </>
         <br />
         <br />

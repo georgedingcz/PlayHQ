@@ -66,9 +66,16 @@ header a:hover {
   text-decoration: none;
   color: black;
   transition: 0.2s;
-  font-family: cursive;
+  font-family:Arial, Helvetica, sans-serif
 }
 
 .otherCard:hover {
   transform: scale(1.05);
+}
+
+.gameName {
+  font-size: larger;
+  margin: 10px;
+  background-color:rgb(204, 201, 201);
+  padding: 20px; 
 }

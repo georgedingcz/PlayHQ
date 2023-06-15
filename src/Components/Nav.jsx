@@ -13,7 +13,7 @@ export default function Nav({ setGameDetails }) {
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/games">Games By Name</NavLink>
+              <NavLink to="/games">All Games</NavLink>
             </li>
             <li>
               <NavLink to="/saleprices">Sale Prices</NavLink>
@@ -21,7 +21,6 @@ export default function Nav({ setGameDetails }) {
             <li>
               <NavLink to="/ratings">Metacritic Ratings</NavLink>
             </li>
-
             <li>
               <NavLink to="/releasedate">Release Dates</NavLink>
             </li>

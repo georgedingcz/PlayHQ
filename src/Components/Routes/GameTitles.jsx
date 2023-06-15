@@ -9,6 +9,9 @@ export default function GameTitles({
   setTitleStoreNumber,
   titleStoreNumber,
   gameStores,
+  sortGroup,
+  setSortGroup,
+  unixTimeStamp,
 }) {
   const handleNextPage = () => {
     setTitlePageNumber(titlePageNumber + 1);
@@ -19,14 +22,16 @@ export default function GameTitles({
   const handleStoreChange = (event) => {
     setTitleStoreNumber(event.target.value);
   };
+  const handleSortGroupChange = (event) => {
+    setSortGroup(event.target.value);
+  };
   return (
     <div>
       <br />
       <div>
         <>
-          <button onClick={handlePreviousPage}>Prev.</button>
-          Page: {titlePageNumber + 1}
-          <button onClick={handleNextPage}>Next</button>
+          <button onClick={handlePreviousPage}>Prev.</button> Page:{" "}
+          {titlePageNumber + 1} <button onClick={handleNextPage}>Next</button>
         </>
         <br />
         <br />
@@ -43,6 +48,22 @@ export default function GameTitles({
               </option>
             ))}
           </select>
+        </>{" "}
+        <>
+          Choose sorting criterion:
+          <select
+            name="sorting choice"
+            value={sortGroup}
+            onChange={handleSortGroupChange}
+          >
+            <option value="title">Title</option>
+            <option value="dealRating">Deal Rating</option>
+            <option value="savings">Savings</option>
+            <option value="price">Price</option>
+            <option value="metacritic">Metacritic Rating</option>
+            <option value="recent">Last Change</option>
+            <option value="release">Release Date</option>
+          </select>
         </>
       </div>
       <div>
@@ -53,7 +74,23 @@ export default function GameTitles({
             to={`/games/${gameByName.gameID}`}
           >
             <img width="300" src={gameByName.thumb} />
-            {gameByName.title}
+            <div className="gameName"> {gameByName.title}</div>
+            <br />
+            Deal Rating: {gameByName.dealRating}
+            <br />
+            Savings: {gameByName.savings}%
+            <br />
+            Sale Price: {gameByName.salePrice}
+            <br />
+            Normal Price: {gameByName.normalPrice}
+            <br />
+            Metacritic Score: {gameByName.metacriticScore}
+            <br />
+            Last Change: {unixTimeStamp(gameByName.lastChange)}
+            <br />
+            Release Date: {unixTimeStamp(gameByName.releaseDate)}
+            <br />
+            <br/>
           </Link>
         ))}
       </div>

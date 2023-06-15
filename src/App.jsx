@@ -33,17 +33,19 @@ function App() {
 
   const [gameStores, setGameStores] = useState([]);
 
-  //retrieve games by store
+  const [sortGroup, setSortGroup] = useState("Title")
+
+  //retrieve all games
   useEffect(() => {
     async function getGamesByName() {
       const response = await fetch(
-        `https://www.cheapshark.com/api/1.0/deals?storeID=${titleStoreNumber}&upperPrice=50&pageNumber=${titlePageNumber}&sortBy=Title`
+        `https://www.cheapshark.com/api/1.0/deals?storeID=${titleStoreNumber}&upperPrice=50&pageNumber=${titlePageNumber}&sortBy=${sortGroup}`
       );
       const jsonData = await response.json();
       setGamesByName(jsonData);
     }
     getGamesByName();
-  }, [titleStoreNumber, titlePageNumber]);
+  }, [titleStoreNumber, titlePageNumber, sortGroup]);
 
   //retrieve games by metacritic score
   useEffect(() => {
@@ -130,6 +132,9 @@ function App() {
                 setTitleStoreNumber={setTitleStoreNumber}
                 titleStoreNumber={titleStoreNumber}
                 gameStores={gameStores}
+                setSortGroup={setSortGroup}
+                sortGroup={sortGroup}
+                unixTimeStamp={unixTimeStamp}
               />
             }
           />

@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 export default function SearchBar({ setGameDetails }) {
   const [searchGame, setSearchGame] = useState("");
+
   const handleChange = (event) => {
     setSearchGame(event.target.value);
-    console.log(searchGame);
   };
 
   async function handleClick() {
@@ -39,3 +39,8 @@ export default function SearchBar({ setGameDetails }) {
     </div>
   );
 }
+// form stuff
+// button
+// close form
+
+//newlink here (another button)

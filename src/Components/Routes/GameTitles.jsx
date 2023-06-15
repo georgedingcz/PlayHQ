@@ -8,18 +8,18 @@ export default function GameTitles({
   setTitleStoreNumber,
   titlePageNumber,
   titleStoreNumber,
+  gameStores,
 }) {
   const handleNextPage = () => {
     setTitlePageNumber(titlePageNumber + 1);
   };
-  const handleNextStore = () => {
-    setTitleStoreNumber(titleStoreNumber + 1);
-  };
+
   const handlePreviousPage = () => {
     setTitlePageNumber(titlePageNumber - 1);
   };
-  const handlePreviousStore = () => {
-    setTitleStoreNumber(titleStoreNumber - 1);
+
+  const handleStoreChange = (event) => {
+    setTitleStoreNumber(event.target.value);
   };
 
   return (
@@ -34,9 +34,18 @@ export default function GameTitles({
         <br />
         <br />
         <>
-          <button onClick={handlePreviousStore}>Prev.</button>
-          Store: {titleStoreNumber}
-          <button onClick={handleNextStore}>Next</button>
+        Choose a shop:
+          <select
+            name="store choice"
+            value={titleStoreNumber}
+            onChange={handleStoreChange}
+          >
+            {gameStores.map((gameStore) => (
+              <option key={gameStore.storeID} value={gameStore.storeID}>
+                {gameStore.storeName}
+              </option>
+            ))}
+          </select>
         </>
       </div>
       <div>
@@ -54,21 +63,3 @@ export default function GameTitles({
     </div>
   );
 }
-
-// const [gameStores, setGameStores] = useState([]);
-
-// useEffect(() => {
-//   async function getGameStores() {
-//     const response = await fetch(`https://www.cheapshark.com/api/1.0/stores`);
-//     const jsonData = await response.json();
-//     setGameStores(jsonData);
-//   }
-//   getGameStores();
-// }, []);
-
-// const sortedGameStore = gameStores.toSorted((a, b) => {
-//   if (a.storeName < b.storeName) {
-//     return -1;
-//   }
-// });
-

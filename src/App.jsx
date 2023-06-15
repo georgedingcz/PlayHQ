@@ -90,6 +90,23 @@ function App() {
     return `${day}/${month}/${year}`;
   };
 
+
+  const [gameStores, setGameStores] = useState([]);
+
+  useEffect(() => {
+    async function getGameStores() {
+      const response = await fetch(`https://www.cheapshark.com/api/1.0/stores`);
+      const jsonData = await response.json();
+      setGameStores(jsonData);
+    }
+    getGameStores();
+  }, []);
+
+
+
+
+
+
   return (
     <>
       {/* nav bar that will show at the top of all pages */}
@@ -117,6 +134,7 @@ function App() {
                 titlePageNumber={titlePageNumber}
                 setTitleStoreNumber={setTitleStoreNumber}
                 titleStoreNumber={titleStoreNumber}
+                gameStores={gameStores}
               />
             }
           />

@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-
 /* eslint react/prop-types: 0 */
+
+import { Link } from "react-router-dom";
 
 export default function TopRatedGamesGroup({ gamesByMetacritic }) {
   const sortedGames = gamesByMetacritic.toSorted((a, b) => {

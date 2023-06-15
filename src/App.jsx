@@ -7,10 +7,9 @@ import Homepage from "./Components/Routes/Homepage";
 import Nav from "./Components/Nav";
 import OneGame from "./Components/Routes/OneGame";
 import NoGame from "./Components/Routes/NoGame";
-import SteamRatings from "./Components/Routes/MetacriticRatings";
 import ReleaseDate from "./Components/Routes/ReleaseDate";
-import SearchBar from "./Components/HomePageInnerComponents/SearchBar";
 import SearchComponent from "./Components/HomePageInnerComponents/SearchComponent";
+import MetacriticRatings from "./Components/Routes/MetacriticRatings";
 
 function App() {
   const [gamesByName, setGamesByName] = useState([]);
@@ -93,7 +92,8 @@ function App() {
 
   return (
     <>
-      {<Nav gameDetails={gameDetails} setGameDetails={setGameDetails} />}
+      {/* nav bar that will show at the top of all pages */}
+      {<Nav setGameDetails={setGameDetails} />}
       <Routes>
         <Route
           path="/"
@@ -106,6 +106,7 @@ function App() {
             />
           }
         />
+        {/* route with games sorted by alphabetical order */}
         <Route path="/games">
           <Route
             index
@@ -119,23 +120,18 @@ function App() {
               />
             }
           />
+          {/* route when a specific game is selected */}
           <Route
             path=":id"
-            element={
-              <OneGame
-                games={gamesByName}
-                unixTimeStamp={unixTimeStamp}
-                setTitlePageNumber={setTitlePageNumber}
-                setTitleStoreNumber={setTitleStoreNumber}
-              />
-            }
+            element={<OneGame unixTimeStamp={unixTimeStamp} />}
           />
           <Route path="*" element={<NoGame />} />
         </Route>
+        {/* route with games sorted by metacritic ratings */}
         <Route
           path="/ratings"
           element={
-            <SteamRatings
+            <MetacriticRatings
               gamesByMetacritic={gamesByMetacritic}
               setMetacriticPageNumber={setMetacriticPageNumber}
               metacriticPageNumber={metacriticPageNumber}
@@ -144,6 +140,7 @@ function App() {
             />
           }
         />
+        {/* route with games sorted by sale prices */}
         <Route
           path="/saleprices"
           element={
@@ -157,6 +154,7 @@ function App() {
             />
           }
         />
+        {/* route with games sorted by release date */}
         <Route
           path="/releasedate"
           element={
@@ -170,6 +168,7 @@ function App() {
             />
           }
         />
+        {/* route with search results */}
         <Route
           path="/search/:id"
           element={<SearchComponent gameDetails={gameDetails} />}

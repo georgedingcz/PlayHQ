@@ -1,7 +1,9 @@
+/* eslint react/prop-types: 0 */
+
 import { NavLink } from "react-router-dom";
 import SearchBar from "./HomePageInnerComponents/SearchBar";
 
-export default function Nav({gameDetails, setGameDetails}) {
+export default function Nav({setGameDetails}) {
   return (
     <>
       <header>
@@ -24,7 +26,7 @@ export default function Nav({gameDetails, setGameDetails}) {
               <NavLink to="/releasedate">Release Dates</NavLink>
             </li>
             <li>
-              <SearchBar gameDetails={gameDetails} setGameDetails={setGameDetails}/>
+              <SearchBar setGameDetails={setGameDetails}/>
             </li>
           </ul>
         </div>

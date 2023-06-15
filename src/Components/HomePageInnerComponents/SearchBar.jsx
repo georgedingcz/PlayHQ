@@ -1,7 +1,9 @@
+/* eslint react/prop-types: 0 */
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function SearchBar({ gameDetails, setGameDetails }) {
+export default function SearchBar({ setGameDetails }) {
   const [searchGame, setSearchGame] = useState("");
   const handleChange = (event) => {
     setSearchGame(event.target.value);

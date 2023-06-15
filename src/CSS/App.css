@@ -6,7 +6,6 @@ body {
 
 header {
   background-color: grey;
-  /* justify-content: flex-start; */
   display: flex;
 }
 
@@ -49,10 +48,6 @@ header a:hover {
   background-color: whitesmoke;
 }
 
-/* h2 {
-  margin: 10px 0px 0px 0px;
-} */
-
 .playHQ {
   color: white;
   margin: 0px;
@@ -68,7 +63,6 @@ header a:hover {
   align-items: center;
   background-color: lightgray;
   margin: 10px;
-  /* text-align: center; */
   text-decoration: none;
   color: black;
   transition: 0.2s;

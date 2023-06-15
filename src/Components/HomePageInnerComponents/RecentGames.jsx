@@ -3,9 +3,6 @@
 import { Link } from "react-router-dom";
 
 export default function RecentGames({ gamesByReleaseDate, unixTimeStamp }) {
-  //   const filteredGame = games.filter((game) => {
-  //     return game.steamRatingPercent > 90;
-  //   });
   const sortedGames = gamesByReleaseDate.toSorted((a, b) => {
     return b.releaseDate - a.releaseDate;
   });

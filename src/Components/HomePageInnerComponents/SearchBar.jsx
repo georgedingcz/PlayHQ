@@ -8,7 +8,6 @@ export default function SearchBar({ setGameDetails }) {
 
   const handleChange = (event) => {
     setSearchGame(event.target.value);
-    console.log(searchGame);
   };
 
   async function handleClick() {
@@ -22,7 +21,6 @@ export default function SearchBar({ setGameDetails }) {
       console.error("Error:");
     }
   }
-
   return (
     <div>
       <br />

@@ -1,4 +1,4 @@
-# Developing Checkers
+# Developing PlayHQ
 
 ## Project Description
 

@@ -14,12 +14,8 @@ export default function SearchBar({ setGameDetails }) {
     const response = await fetch(
       `https://www.cheapshark.com/api/1.0/games?title=${searchGame}&limit=60&exact=0`
     );
-    const data = await response.json();
-    if (data) {
-      setGameDetails(data);
-    } else {
-      console.error("Error:");
-    }
+    const jsonData = await response.json();
+    setGameDetails(jsonData);
   }
   return (
     <div>
